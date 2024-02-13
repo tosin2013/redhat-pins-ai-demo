@@ -1,0 +1,1 @@
+!cd /opt/app-root/src/yolov5 && python train.py --img 1280 --epochs 10 --batch-size 10 --data /opt/app-root/src/redhat-edge-ai-industrial-demo/pins/dataset/data.yaml --weights yolov5s.pt

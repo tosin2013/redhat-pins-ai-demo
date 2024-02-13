@@ -1,0 +1,365 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "4119d1ad-3076-49ff-8f12-e19ece57266f",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "prepare_env.ipynb",
+              "cpu": 2,
+              "gpu": 1,
+              "memory": 8
+            },
+            "label": "",
+            "ui_data": {
+              "label": "prepare_env.ipynb",
+              "image": "/notebook/mltesting/rh1/static/elyra/notebook.svg",
+              "x_pos": 15,
+              "y_pos": 109,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "0d5ceb8c-967d-44d1-84bb-0fe568efb80c",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "pull_git_repo.ipynb"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "pull_git_repo.ipynb",
+              "image": "/notebook/mltesting/rh1/static/elyra/notebook.svg",
+              "x_pos": 208,
+              "y_pos": 267,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "dc4118d1-e468-4c85-b3fa-98ba1b21ac57",
+                  "node_id_ref": "4119d1ad-3076-49ff-8f12-e19ece57266f",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "0636ec18-a1ba-431d-a69f-49616cadee70",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {
+                "size": 8
+              },
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "Train_Model.ipynb",
+              "gpu": 1,
+              "cpu": 2,
+              "memory": 32
+            },
+            "label": "train",
+            "ui_data": {
+              "label": "train",
+              "image": "/notebook/mltesting/rh1/static/elyra/notebook.svg",
+              "x_pos": 558.0000610351562,
+              "y_pos": 158,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "bd8a4575-6647-4b8a-a90a-8451a1d6981c",
+                  "node_id_ref": "0d5ceb8c-967d-44d1-84bb-0fe568efb80c",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "06840ab4-2068-4317-b767-52e73af59e87",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "Store_Model.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:70e893f82b80626b694205152268c13991c131a11c6e04f037464dfd163b8bea"
+            },
+            "label": "",
+            "ui_data": {
+              "label": "Store_Model.ipynb",
+              "image": "/notebook/mltesting/rh1/static/elyra/notebook.svg",
+              "x_pos": 783.0000610351562,
+              "y_pos": 308,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "86dec864-013e-469e-849d-c2df5e116091",
+                  "node_id_ref": "0636ec18-a1ba-431d-a69f-49616cadee70",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "4caed2dc-b3c2-48ef-8d73-e5b51d3fda80",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "component_parameters": {
+              "dependencies": [],
+              "include_subdirectories": false,
+              "outputs": [],
+              "env_vars": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_secrets": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_tolerations": [],
+              "mounted_volumes": [],
+              "filename": "git_push_model.ipynb",
+              "runtime_image": "quay.io/modh/runtime-images@sha256:70e893f82b80626b694205152268c13991c131a11c6e04f037464dfd163b8bea",
+              "cpu": 2,
+              "memory": 8
+            },
+            "label": "",
+            "ui_data": {
+              "label": "git_push_model.ipynb",
+              "image": "/notebook/mltesting/rh1/static/elyra/notebook.svg",
+              "x_pos": 968,
+              "y_pos": 217,
+              "description": "Run notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "5c00f7ca-eb52-4c08-bf56-206b5f94b680",
+                  "node_id_ref": "06840ab4-2068-4317-b767-52e73af59e87",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": []
+        },
+        "version": 8,
+        "runtime_type": "KUBEFLOW_PIPELINES",
+        "properties": {
+          "name": "rh1_demo",
+          "runtime": "Data Science Pipelines",
+          "pipeline_defaults": {
+            "kubernetes_pod_annotations": [],
+            "kubernetes_tolerations": [],
+            "kubernetes_pod_labels": [],
+            "mounted_volumes": [
+              {
+                "path": "/opt/app-root/src/rhdata",
+                "pvc_name": "rhdata",
+                "read_only": false
+              }
+            ],
+            "kubernetes_shared_mem_size": {},
+            "env_vars": [],
+            "kubernetes_secrets": [],
+            "runtime_image": "quay.io/modh/runtime-images@sha256:647c65023e62f292161640e6420d564ac618ed441b5b542e6fd7d81497e5f28a",
+            "disable_node_caching": "True"
+          },
+          "pipeline_parameters": []
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}
