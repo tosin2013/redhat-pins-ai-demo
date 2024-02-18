@@ -1,6 +1,6 @@
-train: ../train/images
-val: ../valid/images
-test: ../test/images
+train: /opt/app-root/src/redhat-pins-ai-demo/dataset/train/images
+val: /opt/app-root/src/redhat-pins-ai-demo/dataset/valid/images
+test: /opt/app-root/src/redhat-pins-ai-demo/dataset/test/images
 
 nc: 3
 names: ['Hatband', 'Paint_Leak', 'RedHatPin']
